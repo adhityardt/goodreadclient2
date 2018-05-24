@@ -1,18 +1,28 @@
 <template>
   <div class="home">
-    <img src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>SignUp Page</h1>
+    <TemplateSignup/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import TemplateSignup from '@/components/TemplateSignup.vue'
 
 export default {
   name: 'home',
+  data () {
+    return {
+
+    }
+  },
   components: {
-    HelloWorld
+    TemplateSignup
+  },
+  beforeCreate () {
+    if (localStorage.getItem('token')){
+      this.$router.push({name: 'mainpage'})
+    }
   }
 }
 </script>

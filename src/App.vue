@@ -1,12 +1,30 @@
 <template>
   <div id="app">
     <div id="nav">
+      <div v-if="!getToken()">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
+      </div>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+  export default {
+    name: 'App',
+    data () {
+      return {
+        isLogin: true
+      }
+    },
+    methods: {
+      getToken () {
+        return localStorage.getItem('token')
+      }
+    }
+  }
+</script>
 
 <style>
 #app {
